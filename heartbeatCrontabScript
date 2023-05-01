@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Define the cron command to run
+## I think we can remove . /etc/profile
+cron_command=". /etc/profile; . /home/"$USER"/ipHeartbeat.sh >> /home/"$USER"/heartbeat.log 2>&1"
+# Check if the cron command already exists in crontab
+if crontab -u $USER -l | grep -Fq "$cron_command"; then
+  echo "ipHeartbeat crontab already exists for $USER, no further additions"
+else
+  # Add the cron command to crontab to run at 30min intervals
+  (echo "*/30 * * * * $cron_command") | crontab -u $USER -
+  echo "ipHeartbeat script has been added to crontab for $USER"
+fi
