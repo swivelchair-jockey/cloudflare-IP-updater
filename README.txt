@@ -1,12 +1,11 @@
 The script checks the current IP address against the previous stored value.
-If the update are different updates both A DNS records (www. and regular) for the website
-
+If the update are different updates A DNS records for the website
 
 SETUP - 
 1. Save CloudFlare DNS Auth token (40 alphanumeric chars) into a new file `/home/$USER/.tokens` in the format:
 `export TOKEN_EDIT_DNS_AUTH=qwertyuiop123_0123456789Q-qwer0123456789`
 
-2. Make sure dependencies `cURL` and `jq` (a 'prettifier' for json that will make grepping easier) are installed
+2. Make sure dependencies `cURL` and `jq` are installed
 
 3. Find your ZoneID by looking at CloudFlare dashboard - this is $zone_id used below
 
